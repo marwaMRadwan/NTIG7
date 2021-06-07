@@ -1,0 +1,14 @@
+create custom element
+=> parent ====> required
+=> tag ===> required
+======optional 
+=> text content
+=> attributes => [{attrName:'id', attrVal:"x"}, {attrName:'class', attrValue:'y'}] 
+=> classes 
+
+
+appendChild
+createElement
+className
+innerText or textContent or innerHTML
+setAttribute => loop
