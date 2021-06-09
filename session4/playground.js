@@ -45,19 +45,83 @@
 //  })
 /* number => odd even  even only */
 
-const testNumber = (num, myReturn) =>{  //err=>false, "err"  data=>"tmam", false
-    if(num%2==0) myReturn(false, "tamam") // return {err:false, data:"tmam"}
-    else myReturn('Err', false)
-}
+// const testNumber = (num, myReturn) =>{  //err=>false, "err"  data=>"tmam", false
+//     if(num%2==0) myReturn(false, "tamam") // return {err:false, data:"tmam"}
+//     else myReturn('Err', false)
+// }
+//('err', false)  (false, 'tmam')
+// testNumber(9, (e,d)=>{
+//     if(e) console.log(e)
+//     else console.log(d);
+// })
 
-testNumber(9, (e,d)=>{
-    if(e) console.log(e)
-    else console.log(d);
-})
 //promises
-
+// setTimeout(()=>console.log('a'), 2000)
+// setTimeout(()=>{console.log('b')}, 2000)
+// console.log('c')
+// const myPromise = (num) =>{
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             typeof num=="number"? resolve('done'): reject('error in data')
+//         },2000)
+//     })
+// }
+// try{
+    // myAsyncFun()
+// }
+// catch(e){
+// console.log(e.message)
+// }
 //async await
+// x= await myPromise(5)
+// console.log(x)
+// const myAsyncFun = async()=>{
+//     try{
+//         x=await(myPromise("hello"))
+//         console.log(x)
+    
+//     }
+//     catch(e){
+// console.log(e)
+//     }
+// }
+// myAsyncFun()
 
+//data=[1,2,3,4,5]  invalid credin
+const myCred = (userName)=>{
+    let p = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            if(userName=="marwa"|| userName=="mohammed"){
+                resolve([1,2,3,4,5])
+            }
+            else {
+                reject('unauthorized')
+            }
+        }, 1500)
+    })
+    return p
+}
+// handelData = async()=>{
+//     try{
+//         d = await myCred('marwa')
+/*
+d=await myCre(0)
+x= await myCre()
+z= await myCred()
+ */
+//         console.log(d)
+//     }
+//     catch(e){
+//         console.log(e)
+//     }
+// }
+// handelData()
 //then catch
-
+myCred('ahmed').then(
+    (res)=>{
+        console.log(res)
+    }
+).catch(
+    (e)=>console.log(e)
+)
 //apiCall
