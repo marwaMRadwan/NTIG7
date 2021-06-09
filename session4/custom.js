@@ -19,6 +19,9 @@ showHide.addEventListener('click', function(e){
     this.textContent=="show add form"? this.textContent = 'Hide add Form' : this.textContent="show add form";
     document.querySelector('#addForm').classList.toggle('d-none')
 })
+t1 = 0
+t2 = 1
+
 drawCustomer = (i, newCustomer) =>{
     let tbody = document.querySelector('#customerData')     
     let tr = createMyElement(tbody, 'tr')
@@ -34,8 +37,6 @@ drawCustomer = (i, newCustomer) =>{
         deleteCustomer(newCustomer.accNum)
         tr.remove()
     })
-    t1 = 0
-    t2 = 1
     editbtn = createMyElement(td, 'button', 'edit')
     editbtn.className = "btn btn-success"
     editbtn.addEventListener('click', function(e){
