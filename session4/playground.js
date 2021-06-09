@@ -1,5 +1,4 @@
 //clousers
-
 // const myClouser = () =>{
 //     return{
 //         hello(){console.log('hello')},
@@ -8,7 +7,6 @@
 //     }
 // }
 // console.log(myClouser().hello())
-
 // const myClouser  = (val) =>{
 //     return {
 //         val,
@@ -88,19 +86,19 @@
 // myAsyncFun()
 
 //data=[1,2,3,4,5]  invalid credin
-const myCred = (userName)=>{
-    let p = new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            if(userName=="marwa"|| userName=="mohammed"){
-                resolve([1,2,3,4,5])
-            }
-            else {
-                reject('unauthorized')
-            }
-        }, 1500)
-    })
-    return p
-}
+// const myCred = (userName)=>{
+//     let p = new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             if(userName=="marwa"|| userName=="mohammed"){
+//                 resolve([1,2,3,4,5])
+//             }
+//             else {
+//                 reject('unauthorized')
+//             }
+//         }, 1500)
+//     })
+//     return p
+// }
 // handelData = async()=>{
 //     try{
 //         d = await myCred('marwa')
@@ -117,11 +115,41 @@ z= await myCred()
 // }
 // handelData()
 //then catch
-myCred('ahmed').then(
-    (res)=>{
-        console.log(res)
-    }
-).catch(
-    (e)=>console.log(e)
-)
+// myCred('ahmed').then(
+//     (res)=>{
+//         console.log(res)
+//     }
+// ).catch(
+//     (e)=>console.log(e)
+// )
 //apiCall
+
+
+
+const getData = async(callback) =>{
+    try{
+    let x = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=50')
+    let y = await(x.json())
+    // console.log(y)   
+    // return y
+    callback(y, false)
+    }
+    catch(e){
+        callback(false, e)
+    }
+}
+// let myData = getData()
+// console.log(myData)
+
+getData( (data, error)=> {
+    if(data)console.log(data)
+    else console.log(error)
+})
+
+
+
+
+
+
+
+
