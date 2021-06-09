@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+</head>
+<body>
+    <section class="container m-4">
+        <button class="btn btn-primary" id="showHide">show add form</button>
+        <div id="addForm" class= "my-3 d-none">
+            <form>
+                <div class="mb-3">
+                    <input name="customerName" placeholder="Customer Name" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <input name="customerBalance" placeholder="Customer Balance" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" id="addEditBtn">add</button>
+            </form>
+        </div>
+    </section>
+    <section class="container m-4">
+        <table class="table table-stripped">
+            <thead>
+                <tr class="">
+                    <th>#</th>
+                    <th>accNum</th>
+                    <th>name</th>
+                    <th>balance</th>
+                </tr>
+            </thead>
+            <tbody id ="customerData">
+
+            </tbody>
+        </table>
+    </section>
+    <script src="custom.js"></script>
+</body>
+</html>
