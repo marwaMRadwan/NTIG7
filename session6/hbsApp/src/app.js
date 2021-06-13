@@ -29,6 +29,30 @@ app.get('/about', (req,res)=>{
     data = {name:"marwa"}
     res.render('about', data)
 })
+
+app.get('/images', (req,res)=>{
+    fs=require('fs')
+data = JSON.parse(fs.readFileSync('data/all.json').toString())
+console.log(data)
+
+    res.render('images', {data, age:false})
+})
+app.get('/images/:id',(req,res)=>{
+
+    res.send(req.params.id)
+})
+app.get('/test', (req,res)=>{
+    res.send(req.query)
+})
+app.get('*',(req,res)=>{
+    res.send('page not found')
+})
+
 //listen
 app.listen(PORT, console.log(`we are on ${PORT}`))
+
+
+
+
+
 
