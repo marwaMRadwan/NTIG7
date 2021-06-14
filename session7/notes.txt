@@ -1,0 +1,16 @@
+npm init --y ==> to create package.json
+npm i express hbs => setup packages 
+create folders:
+    - frontend => static files (html, css, js, images)
+    - resources => views, layouts
+    - src => app.js
+    - index.js
+
+===============================================
+task
+todoapp with hbs and json
+add task => id, title, content, status
+show all tasks => table => id, title , actions (edit, delete, show, change status)
+change status => !stauts if s = true let s=false and vice
+delete remove task
+edit => show edit page and task details inside form when press edit redirect to show all and see the new data
