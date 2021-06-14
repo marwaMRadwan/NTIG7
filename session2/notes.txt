@@ -1,14 +1,42 @@
-create custom element
-=> parent ====> required
-=> tag ===> required
-======optional 
-=> text content
-=> attributes => [{attrName:'id', attrVal:"x"}, {attrName:'class', attrValue:'y'}] 
-=> classes 
+// create custom element
+// => parent ====> required
+// => tag ===> required
+// ======optional 
+// => text content
+// => attributes => [{attrName:'id', attrVal:"x"}, {attrName:'class', attrValue:'y'}] 
+// => classes 
 
 
-appendChild
-createElement
-className
-innerText or textContent or innerHTML
-setAttribute => loop
+// appendChild
+// createElement
+// className
+// innerText or textContent or innerHTML
+// setAttribute => loop
+
+
+
+
+/*
+todo Application
+tasks => [task,........]
+task => title, content, due date, status, type
+functions => add, show all Tasks, edit(finish status), delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
