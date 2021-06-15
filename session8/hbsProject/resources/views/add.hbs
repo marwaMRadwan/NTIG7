@@ -1,0 +1,20 @@
+{{>header.layout}}
+{{>navbar.layout}}
+<section class="container my-4">
+    <form>
+        <div class="mb-3">
+            <input type="text" name="title" placeholder="task title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <textarea placeholder="task content" name="content" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="status">
+            <label class="form-check-label" for="exampleCheck1">Task Status</label>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-success">add Task</button>
+        </div>
+    </form>
+</section>
+{{>footer.layout}}
