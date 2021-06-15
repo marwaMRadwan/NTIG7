@@ -72,3 +72,5 @@ const editTask = (req, res)=>{
     res.render('edit', data)
 }
 module.exports={ addTask, editTask, showAll, showSingle, deleteTask }
+
+
