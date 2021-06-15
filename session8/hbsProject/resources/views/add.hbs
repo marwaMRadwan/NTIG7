@@ -1,5 +1,14 @@
 {{>header.layout}}
 {{>navbar.layout}}
+{{#if errorStatus}}
+<div class="container alert alert-danger my-3 ">
+    <ul>
+    {{#each errors}}
+<li>{{this}}</li>
+    {{/each}}
+    </ul>
+</div>
+{{/if}}
 <section class="container my-4">
     <form>
         <div class="mb-3">

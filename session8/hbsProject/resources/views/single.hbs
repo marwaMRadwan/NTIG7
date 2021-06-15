@@ -1,4 +1,20 @@
 {{>header.layout}}
 {{>navbar.layout}}
+<section class="container my-5">
+    {{#if status}}
+    <div class="alert alert-success">
+        <ul>
+        <li>{{myData.title}}</li>
+        <li>{{myData.content}}</li>
+        <li>{{myData.status}}</li>
 
+        </ul>
+    </div>
+    
+    {{else}}
+        <div class="alert alert-danger">
+            no data found
+        </div>
+    {{/if}}
+</section>
 {{>footer.layout}}

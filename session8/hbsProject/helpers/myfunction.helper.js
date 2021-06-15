@@ -1,6 +1,6 @@
 const fs = require('fs')
 readData=()=>{
-    let data 
+    let data
     try { 
         data = JSON.parse(fs.readFileSync('data.json').toString())
         // if(data.length){}
@@ -26,4 +26,4 @@ addData = (task) => {
     return result
 }
 
-module.exports = { addData}
+module.exports = { addData, readData, writeData}
