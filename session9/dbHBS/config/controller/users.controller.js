@@ -1,4 +1,4 @@
-const dbConnection = require('../db/db')
+const dbConnection = require('../../db/db')
 const {ObjectID}=require('mongodb')
 showAll = (req,res)=>{
     dbConnection(db=>{
@@ -13,6 +13,26 @@ showAll = (req,res)=>{
     })
 }
 
+editSingle = (req,res) =>{
+    let id = req.params.id
+    dbConnection(db=>{
+        db.collection('user').findOne({_id:new ObjectID(id)}, (err, user)=>{
+            res.render('edit', user)
+        })
+    })
+
+}
+editData = (req, res) =>{
+    let id = req.params.id
+    newData = req.body
+    dbConnection(db=>{
+        db.collection('user').updateOne(
+            {_id:new ObjectID(id)},
+            {$set:{username:newData.username, userage:newData.userage}})
+            .then( user=>{res.redirect('/')})
+            .catch(e=>{console.log(e)})
+    })
+}
 showSingle = (req,res) =>{
     let id = req.params.id
     dbConnection(db=>{
@@ -51,5 +71,7 @@ module.exports={
     addNewUserPOST,
     showAll,
     showSingle,
-    deleteUser
+    deleteUser,
+    editSingle,
+    editData
 }

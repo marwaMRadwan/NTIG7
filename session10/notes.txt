@@ -1,0 +1,11 @@
+bank
+
+homepage => username, password => myAccount =>operations => show single, edit, delete
+=>invalid data
+
+register page => add user => name , password
+
+add operation => amount, date, location
+edit operation
+delete 
+show all operations
