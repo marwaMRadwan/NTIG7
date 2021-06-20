@@ -1,0 +1,7 @@
+
+teacher => name, salary, class
+register teacher
+get all teachers
+get single teacher
+delete 
+
