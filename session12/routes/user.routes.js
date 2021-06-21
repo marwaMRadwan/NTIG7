@@ -1,7 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const User = require('../models/user.model')
-
+const authMe = require('../middleware/auth')
 router.post('/user/register', async(req,res)=>{
     try{
         let user = new User(req.body)
@@ -55,6 +55,32 @@ router.get('/user/all', async(req,res)=>{
             status:false,
             data:e,
             message:"done"
+        })
+    }
+})
+
+router.get('/myProfile', authMe, (req,res)=>{
+    res.send({user:req.user, token:req.token})
+})
+
+router.post('/logout',authMe, async(req,res)=>{
+    try{
+        req.user.tokens = req.user.tokens.filter(ele=>{
+            // console.log(ele.token, '-' , req.token)
+            return ele.token!=req.token
+        })
+        //req.user.tokens=[]
+        await req.user.save()
+        res.status(200).send({
+            status:true,
+            message:'logged out'
+        })
+    }
+    catch(e){
+        res.status(500).send({
+            status:false,
+            message:'error',
+            error:e.message
         })
     }
 })
