@@ -1,0 +1,26 @@
+==> user
+    - _id ,id, fname, lname, email, password, profile image, phone, userName, birthdate, account status , friends
+==> post
+    - _id, userId, content, postType, numOfLikes, numOfComments, comments 
+==>
+for every comment => comment details, user
+for friend => user
+
+
+user register
+activation
+login
+logout
+show profile
+edit profile
+remove account
+deactivate account
+add friend
+remove friend
+add, show, edit, remove post
+change profile image
+like post
+comment post
+show friend timeline
+reset password
+upload gallery
