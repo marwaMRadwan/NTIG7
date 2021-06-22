@@ -23,4 +23,15 @@ router.post('/post/add', authMe, async(req,res)=>{
     }
 })
 
+router.post('/post/me', authMe, async(req,res)=>{
+    try{
+        await req.user.populate({
+            path:'userPosts'
+        }).execPopulate()
+        res.send(req.user.userPosts)
+    }
+    catch(e){
+        res.send(e)
+    }
+})
 module.exports = router
