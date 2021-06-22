@@ -1,9 +1,11 @@
 const express = require('express')
 const userRoutes = require('../routes/user.routes')
+const postRoutes = require('../routes/post.routes')
 require('../dbConnection/db')
 const app = express()
 app.use(express.json())
 app.use(userRoutes)
+app.use(postRoutes)
 // const userModel = require('../models/user.model')
 // app.post('/add', async(req,res)=>{
 //     try{
