@@ -24,3 +24,9 @@ comment post
 show friend timeline
 reset password
 upload gallery
+
+
+user = email, pass, usertype
+
+admin details
+user details

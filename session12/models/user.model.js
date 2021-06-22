@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     fname:{ type:String, required:true, maxlength:20 },
     lname:{ type:String, required:true, maxlength:20 },
     accountStatus:{ type:Boolean, default:false },
+    activateCode:{type:String},
     password:{ type:String, trim:true, required:true },
     birthdate: { type:Date },
     userName: { type:String },
@@ -24,8 +25,7 @@ const userSchema = new mongoose.Schema({
     friends :[
         {
             friend_id:{ 
-                type: mongoose.Schema.Types.ObjectId,
-                unique:true
+                type: mongoose.Schema.Types.ObjectId
             }
         }
     ],
@@ -44,15 +44,25 @@ userSchema.methods.toJSON = function(){
     })
     return user
 }
+userSchema.virtual('userPosts',{
+    ref:'Post',
+    localField:'_id',
+    foreignField:'user_id'
+})
+
+
 userSchema.pre('save', async function(next){
     try{
         user = this
+        // console.log(this.__v)
+if(!this.__v) {
+    console.log('test')
+    lastuser = await User.findOne().sort({_id:-1})
+    if(!lastuser) user.id=1
+    else user.id = lastuser.id+1
+    if(!user.userName) user.userName = user.fname+user.lname
 
-        lastuser = await User.findOne().sort({_id:-1})
-        if(!lastuser) user.id=1
-        else user.id = lastuser.id+1
-
-        if(!user.userName) user.userName = user.fname+user.lname
+}
 
         if(user.isModified('password')){
            user.password = await bcrypt.hash(user.password, 12)
