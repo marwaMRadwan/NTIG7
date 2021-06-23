@@ -14,23 +14,18 @@ logout => done
 show profile =>done
 edit profile => done
 remove account => done (still need realstion cascade)
-deactivate account
+deactivate account =>done
 add friend => done
 myPosts => done
-remove friend
+remove friend => dome
 add post => done
+change profile image => done
+upload gallery  => done
 show post
 edit,
  remove post
-change profile image
 like post
 comment post
 show friend timeline
 reset password
-upload gallery
 
-
-user = email, pass, usertype
-
-admin details
-user details

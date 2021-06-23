@@ -198,5 +198,59 @@ res.send(e)
     }
 })
 
+router.patch('/user/deactivate', auth.generalAuth, async(req,res)=>{
+    try{
+        req.user.userStatus=false
+        await req.user.save()
+        res.send('stopped')
+    }
+    catch(e){
+        res.send(e)
+    }
+})
 
+router.post('/removeFriend', auth.authMe, async(req,res)=>{
+    try{
+        // let len = req.user.friends.length
+
+        // req.user.friends = req.user.friend.filter(el => req.body.fId != el.friend_id)
+        // if(req.user.friends.length == len) res.send('user not found')
+         search = req.user.friends.findIndex(el => el.friend_id==req.body.fId)
+         if(search==-1)  res.send('user not found')
+         req.user.friends.splice(search,1)
+         req.user.save()
+        res.send('done')
+    }
+    catch(e){res.send(e)}
+})
+
+const multer= require('multer')
+const fs= require('fs')
+// var upload = multer({ dest: 'uploads/' })
+// router.post('/profile',auth.authMe, upload.single('profile'), async(req,res)=>{
+//     //_id  /uploads/${req.user._id}.${ext}
+//     fileWithExt = `${req.file.path}.${req.file.originalname.split('.').pop()}`
+//     fs.rename(req.file.path, fileWithExt, (err)=>{ if(err) console.log(err) })
+//     req.user.userImage = fileWithExt
+//     await req.user.save()
+//     res.send(req.file)
+// })
+
+imgname = ''
+let storage = multer.diskStorage({
+    destination: function(req,res,cb) {cb(null, 'images')},
+    filename: function(req,file, cb){
+        imgname = Date.now()+'.'+(file.originalname.split('.').pop())
+        cb(null, imgname)
+    }
+})
+let upload = multer({storage: storage})
+// fs.mkdirSync('./dir');
+router.post('/upload', upload.single('profile'), async(req,res)=>{
+    // req.user.img = imgname
+    res.send('done')
+})
+router.post('/uploadmulti', upload.array('profile'), async(req,res)=>{
+    res.send('done')
+})
 module.exports = router

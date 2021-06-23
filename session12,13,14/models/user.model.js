@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const Post = require('../models/post.model')
 const userSchema = new mongoose.Schema({
     id:{ type:Number},
     userType:{type:Boolean, required:true},
@@ -37,6 +38,16 @@ const userSchema = new mongoose.Schema({
     { timestamps:true }
 )
 
+userSchema.pre('remove',async function(next){
+    try{
+        user = this
+        Post.deleteMany({user_id:user._id})
+        next()
+    }
+    catch(e){
+        throw new error(e)
+    }
+})
 userSchema.methods.toJSON = function(){
     let user = this.toObject()
     deleteItems = ['password']
@@ -50,7 +61,6 @@ userSchema.virtual('userPosts',{
     localField:'_id',
     foreignField:'user_id'
 })
-
 
 userSchema.pre('save', async function(next){
     try{
