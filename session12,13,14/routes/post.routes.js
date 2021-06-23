@@ -1,9 +1,9 @@
 const express = require('express')
 const router = new express.Router()
-const authMe = require('../middleware/auth')
+const auth = require('../middleware/auth')
 const Post = require('../models/post.model')
 
-router.post('/post/add', authMe, async(req,res)=>{
+router.post('/post/add', auth.authMe, async(req,res)=>{
     // data = req.body
     // data.user_id = req.user._id
     // d = {
@@ -23,7 +23,7 @@ router.post('/post/add', authMe, async(req,res)=>{
     }
 })
 
-router.post('/post/me', authMe, async(req,res)=>{
+router.post('/post/me', auth.authMe, async(req,res)=>{
     try{
         await req.user.populate({
             path:'userPosts'

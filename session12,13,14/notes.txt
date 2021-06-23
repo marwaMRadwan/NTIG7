@@ -7,17 +7,21 @@ for every comment => comment details, user
 for friend => user
 
 
-user register =>
-activation
-login
-logout
-show profile
-edit profile
-remove account
+user register => done
+activation => done
+login => done
+logout => done
+show profile =>done
+edit profile => done
+remove account =>
 deactivate account
-add friend
+add friend => done
+myPosts => done
 remove friend
-add, show, edit, remove post
+add post => done
+show post
+edit,
+ remove post
 change profile image
 like post
 comment post

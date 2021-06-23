@@ -1,7 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const User = require('../models/user.model')
-const authMe = require('../middleware/auth')
+const auth = require('../middleware/auth')
 router.post('/user/register', async(req,res)=>{
     try{
         let user = new User(req.body)
@@ -45,11 +45,11 @@ router.post('/user/login', async(req,res)=>{
     }
 })
 
-router.get('/me', authMe, (req,res)=>{
+router.get('/me', auth.authMe, (req,res)=>{
     res.send({user:req.user, token:req.token})
 })
 
-router.post('/logout',authMe, async(req,res)=>{
+router.post('/logout',auth.authMe, async(req,res)=>{
     try{
         req.user.tokens = req.user.tokens.filter(ele=>{
             // console.log(ele.token, '-' , req.token)
@@ -71,7 +71,7 @@ router.post('/logout',authMe, async(req,res)=>{
     }
 })
 
-router.post('/logoutAll',authMe, async(req,res)=>{
+router.post('/logoutAll',auth.authMe, async(req,res)=>{
     try{
         req.user.tokens=[]
         await req.user.save()
@@ -90,7 +90,7 @@ router.post('/logoutAll',authMe, async(req,res)=>{
 })
 
 //edit user ==> fname, lname, password  req.body 
-router.patch('/user/edit', authMe, async(req,res)=>{
+router.patch('/user/edit', auth.authMe, async(req,res)=>{
     reqUpdates = Object.keys(req.body) //[fname,email, lname ]
     allowed = ['fname', 'lname', 'password']
     //every
@@ -117,7 +117,7 @@ router.patch('/user/edit', authMe, async(req,res)=>{
     }
 })
 
-router.put('/user/activate', authMe, async(req,res)=>{
+router.put('/user/activate', auth.authMe, async(req,res)=>{
     try{
         req.user.accountStatus=true
         await req.user.save()
@@ -159,7 +159,7 @@ router.get('/user/all', async(req,res)=>{
     }
  })
 
-router.post('/user/addFriend',authMe, async(req,res)=>{
+router.post('/user/addFriend',auth.authMe, async(req,res)=>{
     try{
         const fId = req.body.fId
         if(req.user._id==fId) throw new Error('you can\'t add your self' )
@@ -178,6 +178,17 @@ router.post('/user/addFriend',authMe, async(req,res)=>{
     catch(e){
         res.send(e.message)
     }
+})
+
+router.delete('/user/delete', auth.authMe, async(req,res)=>{
+    try{    
+        await req.user.remove()
+    }
+    catch(e){}
+})
+
+router.delete('/admin/userDel/:id', auth.adminAuth, async(req,res)=>{
+    res.send('test')
 })
 
 
