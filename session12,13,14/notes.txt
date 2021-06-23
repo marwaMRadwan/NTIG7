@@ -13,7 +13,7 @@ login => done
 logout => done
 show profile =>done
 edit profile => done
-remove account =>
+remove account => done (still need realstion cascade)
 deactivate account
 add friend => done
 myPosts => done

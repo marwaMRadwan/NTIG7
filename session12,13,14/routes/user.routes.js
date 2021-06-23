@@ -188,7 +188,14 @@ router.delete('/user/delete', auth.authMe, async(req,res)=>{
 })
 
 router.delete('/admin/userDel/:id', auth.adminAuth, async(req,res)=>{
-    res.send('test')
+    try{
+        _id = req.params.id
+        await User.findByIdAndDelete(_id)
+        res.send('done')
+    }
+    catch(e){
+res.send(e)
+    }
 })
 
 
