@@ -236,21 +236,36 @@ const fs= require('fs')
 //     res.send(req.file)
 // })
 
-imgname = ''
-let storage = multer.diskStorage({
-    destination: function(req,res,cb) {cb(null, 'images')},
-    filename: function(req,file, cb){
-        imgname = Date.now()+'.'+(file.originalname.split('.').pop())
-        cb(null, imgname)
-    }
+// imgname = ''
+// let storage = multer.diskStorage({
+//     destination: function(req,res,cb) {cb(null, 'images')},
+//     filename: function(req,file, cb){
+//         imgname = Date.now()+'.'+(file.originalname.split('.').pop())
+//         cb(null, imgname)
+//     }
+// })
+// let upload = multer({storage: storage})
+// // fs.mkdirSync('./dir');
+// router.post('/upload', upload.single('profile'), async(req,res)=>{
+//     // req.user.img = imgname
+//     res.send('done')
+// })
+// router.post('/uploadmulti', upload.array('profile'), async(req,res)=>{
+//     res.send('done')
+// })
+var upload = multer({ dest: 'uploads/' })
+router.post('/profile1', upload.array('profile'), async(req,res)=>{
+    //_id  /uploads/${req.user._id}.${ext}
+    // res.send(req.files)
+    files = []
+    req.files.forEach(file=>{
+    fileWithExt = `${file.path}.${file.originalname.split('.').pop()}`
+    fs.rename(file.path, fileWithExt, (err)=>{ if(err) console.log(err) })
+    files.push(fileWithExt)
+
+    })
+    res.send(files)
 })
-let upload = multer({storage: storage})
-// fs.mkdirSync('./dir');
-router.post('/upload', upload.single('profile'), async(req,res)=>{
-    // req.user.img = imgname
-    res.send('done')
-})
-router.post('/uploadmulti', upload.array('profile'), async(req,res)=>{
-    res.send('done')
-})
+
+
 module.exports = router
