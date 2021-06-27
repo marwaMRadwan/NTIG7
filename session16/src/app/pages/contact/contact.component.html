@@ -1,0 +1,9 @@
+<app-contactform></app-contactform>
+
+<section class="container row">
+    <div class="col-3" *ngFor="let single of images; let i=index">
+        <img [src]="single.url" class="img-fluid">
+        <h4>{{i}} - {{single.title}}   </h4>
+        single
+    </div>
+</section>

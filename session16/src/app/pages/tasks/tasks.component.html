@@ -1,0 +1,16 @@
+<input name="title" [(ngModel)]="task.title">
+<input name="content" [(ngModel)]="task.content">
+<button (click)="handelAdd()">submit</button>
+
+<table class="table">
+    <thead>
+        <th>title</th>
+        <th>content</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of tasks;let i=index">
+            <td>{{x.title}}</td>
+            <td>{{x.content}}</td>
+        </tr>
+    </tbody>
+</table>

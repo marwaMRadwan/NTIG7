@@ -1,0 +1,6 @@
+create page => bootstrap, fontawsome
+navbar - slider - contact form - footer
+
+navbar, contact - footer
+ng new app
+ng g c shared/x
