@@ -1,16 +1,39 @@
-<input name="title" [(ngModel)]="task.title">
+<!-- <input name="title" [(ngModel)]="task.title">
 <input name="content" [(ngModel)]="task.content">
 <button (click)="handelAdd()">submit</button>
 
-<table class="table">
+<table class="table table-stripped">
     <thead>
         <th>title</th>
         <th>content</th>
     </thead>
     <tbody>
-        <tr *ngFor="let x of tasks;let i=index">
-            <td>{{x.title}}</td>
+        <div *ngIf="tasks.length==0">no data</div>
+        <tr *ngFor="let x of tasks;let i=index; let e=even; let o=odd" 
+        [ngClass]="{odd:o, even:e, x:true}">  -->
+            <!-- <td>{{o}} - {{e}}</td> -->
+            <!-- <td>{{x.title}}</td>
             <td>{{x.content}}</td>
         </tr>
     </tbody>
 </table>
+
+<input [(ngModel)]="val">
+
+<div [ngSwitch]="val">
+    <p *ngSwitchCase="'1'">jan</p>
+    <p *ngSwitchCase="'2'">feb</p>
+    <p *ngSwitchCase="'3'">march</p>
+    <p *ngSwitchDefault>not found</p>
+</div>
+ -->
+<div (click)="changeStatus()">change now</div>
+ <div class="container alert alert-success" *ngIf="status; then b2 else b1">
+      hello not working if we have then
+ </div>
+ <ng-template #b2>
+    <div class="container alert alert-primary">else</div>
+ </ng-template>
+ <ng-template #b1>
+    <div class="container alert alert-danger">else</div>
+ </ng-template>

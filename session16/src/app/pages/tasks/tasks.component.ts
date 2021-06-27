@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TasksComponent implements OnInit {
   tasks :any = JSON.parse(localStorage.getItem('tasks') || '[]')
   task : any = { title: '', content:'' }
+val:any=null
+status:boolean = false
   constructor() { }
 
   ngOnInit(): void {
@@ -18,5 +20,8 @@ export class TasksComponent implements OnInit {
     this.tasks.push(this.task)
     this.task = { title:'', content:'' }
     localStorage.setItem('tasks', JSON.stringify(this.tasks))
+  }
+  changeStatus(){
+    this.status=!this.status
   }
 }
