@@ -10,6 +10,7 @@ export class TasksComponent implements OnInit {
   task : any = { title: '', content:'' }
 val:any=null
 status:boolean = false
+d:any=new Date()
   constructor() { }
 
   ngOnInit(): void {
