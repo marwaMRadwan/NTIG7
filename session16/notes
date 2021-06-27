@@ -4,3 +4,42 @@ navbar - slider - contact form - footer
 navbar, contact - footer
 ng new app
 ng g c shared/x
+
+
+product=> id
+user=id
+order
+orderid,
+user id,
+products [ id , quantity, .....]
+
+generate rand invoice num
+
+inv num, products_id, userid, quant
+
+
+
+category => items
+
+cart
+
+order
+
+
+category => cat_id name
+items => [item_id, cat_id, name, [meal, addi,.....]]
+cart => user id , item id, quant , _id
+order => userid, [item1 3, item3 7, ....]
+
+
+
+wgbat => rob3 fr5a => roz, rob, m5lel, nos fr5a => roz, friez,...
+salads descr=>null
+drinks
+offers
+
+
+
+
+
+
