@@ -1,0 +1,41 @@
+<section class="container my-5">
+    {{register.value|json}}
+    <br>
+    {{register.touched}}
+    <br>
+    {{register.dirty}}
+    <br>
+    {{register.submitted}}
+<form #register = "ngForm" (ngSubmit)="handelRegister(register)">
+    <div class="mb-3">
+        <input class="form-control" name="name" #name="ngModel" ngModel 
+        required minlength="5" maxlength="15" email>
+        <br>
+       <div class="alert alert-danger" *ngIf="name.dirty&&name.invalid">
+           <li *ngIf="name.errors?.required">name is required</li>
+           <li *ngIf="name.errors?.minlength">name is min length err</li>
+           <li *ngIf="name.errors?.email">name is not email</li>
+           error
+           {{name?.errors|json}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" name="email" ngModel>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" name="password" ngModel>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" name="phone" ngModel>
+    </div>
+    <div class="mb-3">
+        <select class="form-control" name="gender" ngModel>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <button>register</button>
+    </div>
+</form>
+</section>
