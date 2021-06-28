@@ -6,10 +6,11 @@
     {{register.dirty}}
     <br>
     {{register.submitted}}
-<form #register = "ngForm" (ngSubmit)="handelRegister(register)">
+    <div *ngIf="register?.submitted"></div>
+<form #register = "ngForm" (ngSubmit)="handelRegister()">
     <div class="mb-3">
-        <input class="form-control" name="name" #name="ngModel" ngModel 
-        required minlength="5" maxlength="15" email>
+        <input class="form-control" name="name" #name="ngModel" [(ngModel)]="data.name" 
+        required minlength="5" maxlength="15" placeholder="name"> 
         <br>
        <div class="alert alert-danger" *ngIf="name.dirty&&name.invalid">
            <li *ngIf="name.errors?.required">name is required</li>
@@ -20,16 +21,16 @@
         </div>
     </div>
     <div class="mb-3">
-        <input class="form-control" name="email" ngModel>
+        <input class="form-control" name="email" [(ngModel)]="data.email" placeholder="email">
     </div>
     <div class="mb-3">
-        <input class="form-control" name="password" ngModel>
+        <input class="form-control" name="password" [(ngModel)]="data.password" placeholder="password">
     </div>
     <div class="mb-3">
-        <input class="form-control" name="phone" ngModel>
+        <input class="form-control" name="phone" [(ngModel)]="data.phone" placeholder="phone">
     </div>
     <div class="mb-3">
-        <select class="form-control" name="gender" ngModel>
+        <select class="form-control" name="gender" [(ngModel)]="data.gender">
             <option value="0">Male</option>
             <option value="1">Female</option>
         </select>

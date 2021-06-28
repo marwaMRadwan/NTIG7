@@ -1,0 +1,15 @@
+<section *ngIf="!isRoleLoaded; else showData">loading</section>
+<ng-template #showData>
+<section class="container my-5">
+<div class="alert alert-danger" *ngIf="rolesData.length==0; else all">
+    no data
+</div>
+<ng-template #all>
+    <ul>
+        <li *ngFor="let single of rolesData">
+            <a routerLink="providers/{{single.slug}}">{{single.title}}</a>
+        </li>
+    </ul>
+</ng-template>
+</section>
+</ng-template>

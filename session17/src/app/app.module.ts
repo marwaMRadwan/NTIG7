@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
 import { ApiDataComponent } from './components/api-data/api-data.component';
 import { RegisterComponent } from './users/register/register.component';
+import { AllrolesComponent } from './providers/allroles/allroles.component';
+import { SingleRoleComponent } from './providers/single-role/single-role.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApiDataComponent,
-    RegisterComponent
+    RegisterComponent,
+    AllrolesComponent,
+    SingleRoleComponent
   ],
   imports: [
     BrowserModule,
