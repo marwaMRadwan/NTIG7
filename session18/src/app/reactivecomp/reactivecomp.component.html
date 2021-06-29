@@ -1,0 +1,20 @@
+{{contact.valid}}
+<form [formGroup]="contact" (ngSubmit)="handelAdd()">
+    <input formControlName="name"> 
+    <div *ngIf="name?.invalid"> 
+<p *ngIf="name?.errors?.required">required</p>
+<p *ngIf="name?.errors?.minlength">min len</p>
+<p *ngIf="name?.errors?.maxlength">max len</p>
+
+    </div>
+    <br>
+
+    <input formControlName="phone"> <br>    
+    <input formControlName="email"> <br>    
+    <textarea formControlName="content"></textarea> <br>
+    <div formGroupName="address">
+        <input formControlName="gov">
+        <input formControlName="city">
+    </div>
+    <button>add</button>
+</form>

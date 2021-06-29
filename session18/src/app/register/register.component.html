@@ -1,0 +1,19 @@
+<section class="my-5 border border-danger border-3 container ">
+    <form [formGroup]="user" (ngSubmit)="handleRegister()">
+        <div class="mb-3">
+            <input class="col-6" placeholder="name" formControlName="name">
+            <input class="col-6" placeholder="email" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <input class="col-6" placeholder="phone" formControlName="phone">
+            <input class="col-6" placeholder="password" formControlName="password">
+        </div>
+        <div class="mb-3">
+            <select class="col-6" placeholder="role" formControlName="role">
+                <option></option>
+            </select>
+            <input class="col-6" placeholder="gender" formControlName="gender">
+        </div>
+        <button class="btn btn-primary">add</button>
+    </form>
+</section>
