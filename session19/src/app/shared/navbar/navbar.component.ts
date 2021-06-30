@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+// status = localStorage.getItem('status')
+  constructor(public _global:GlobalService) { }
 
   ngOnInit(): void {
   }

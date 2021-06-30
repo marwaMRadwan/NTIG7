@@ -5,10 +5,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-
+public status = false
   private commonUrl = `http://medical.mind-techs.com/api/auth/`
   constructor( private _http: HttpClient) { }
   register(data:any):Observable<any>{
     return this._http.post(`${this.commonUrl}signUp`, data)
+  }
+  login(data:any):Observable<any>{
+    return this._http.post(`${this.commonUrl}login`, data)
+  }
+  me():Observable<any>{
+    return this._http.post(`${this.commonUrl}me`, {lang_id:1})
   }
 }

@@ -12,7 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { Err404Component } from './pages/err404/err404.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserInterceptor } from './user.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

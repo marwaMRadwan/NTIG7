@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-all-data',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _global:GlobalService) { 
+    this.getMe()
+  }
 
   ngOnInit(): void {
   }
+  data : any =[]
+getMe(){
+  this._global.me().subscribe(res=>{this.data=res[0]; console.log(res)})
+}
 
 }

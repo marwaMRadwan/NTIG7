@@ -4,13 +4,13 @@
         <!-- <div *ngIf="msg!=null && msg.flag" class="alert alert-primary" >Added Succesfully</div> -->
         <div class="mb-3 row">
                 <input class="form-control" placeholder="email" formControlName="email">
-                <div class="alert alert-danger">
-                 <!-- *ngIf="email?.invalid && (email?.dirty || email?.touched)"> -->
-                    <!-- <ul >
+                <div class="alert alert-danger"
+                 *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                    <ul >
                         <li *ngIf = "email?.errors?.required">email is required</li>
                         <li *ngIf = "email?.errors?.email">email must be an Email</li>
 
-                    </ul> -->
+                    </ul>
                     </div>
                     <!-- <div class="alert alert-danger" *ngIf= "msg!=null && !msg.flag && msg?.data?.email">
                         <li >{{msg?.data?.email}}</li>
