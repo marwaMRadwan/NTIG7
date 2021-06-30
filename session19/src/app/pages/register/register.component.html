@@ -1,10 +1,13 @@
 
 <section class="my-5 border border-danger border-3 container ">
     <form [formGroup]="user" (ngSubmit)="handleRegister()" class="p-3 m-3">
+        <div *ngIf="msg!=null && msg.flag" class="alert alert-primary" >Added Succesfully</div>
         <div class="mb-3 row">
             <div class="col-6">
                 <input class="form-control" placeholder="name" formControlName="name" >
-                <div class="alert alert-danger" *ngIf="isSubmitted || (name?.invalid && (name?.dirty || name?.touched))">
+                <div class="alert alert-danger" 
+                *ngIf="(isSubmitted && (name?.invalid && (name?.dirty || name?.touched))) ||
+                ( (name?.invalid && (name?.dirty || name?.touched)))">
                     <ul>
                         <li *ngIf = "name?.errors?.required">name is required</li>
                         <li *ngIf = "name?.errors?.minlength">name must be more than 3 chars</li>
@@ -15,10 +18,14 @@
             <div class="col-6">
                 <input class="form-control" placeholder="email" formControlName="email">
                 <div class="alert alert-danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-                    <ul>
+                    <ul >
                         <li *ngIf = "email?.errors?.required">email is required</li>
                         <li *ngIf = "email?.errors?.email">email must be an Email</li>
+
                     </ul>
+                    </div>
+                    <div class="alert alert-danger" *ngIf= "msg!=null && !msg.flag && msg?.data?.email">
+                        <li >{{msg?.data?.email}}</li>
                 </div>
             </div>
         </div>
@@ -28,7 +35,11 @@
             </div>
             <div class="col-6">
             <input class="form-control" placeholder="password" formControlName="password">
-            </div>
+            <div class="alert alert-danger" *ngIf= "msg!=null && !msg.flag && msg?.data?.password">
+                <li >{{msg?.data?.password}}</li>
+        </div>
+
+        </div>
         </div>
         <div class="mb-3 row">
             <div class="col-6">

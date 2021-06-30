@@ -1,1 +1,29 @@
-<p>login works!</p>
+
+<section class="my-5 border border-danger border-3 container ">
+    <form [formGroup]="user" (ngSubmit)="handleLogin()" class="p-3 m-3">
+        <!-- <div *ngIf="msg!=null && msg.flag" class="alert alert-primary" >Added Succesfully</div> -->
+        <div class="mb-3 row">
+                <input class="form-control" placeholder="email" formControlName="email">
+                <div class="alert alert-danger">
+                 <!-- *ngIf="email?.invalid && (email?.dirty || email?.touched)"> -->
+                    <!-- <ul >
+                        <li *ngIf = "email?.errors?.required">email is required</li>
+                        <li *ngIf = "email?.errors?.email">email must be an Email</li>
+
+                    </ul> -->
+                    </div>
+                    <!-- <div class="alert alert-danger" *ngIf= "msg!=null && !msg.flag && msg?.data?.email">
+                        <li >{{msg?.data?.email}}</li>
+            </div> -->
+        </div>
+        <div class="mb-3 row">
+            <input class="form-control" placeholder="password" formControlName="password">
+            <!-- <div class="alert alert-danger" *ngIf= "msg!=null && !msg.flag && msg?.data?.password">
+                <li >{{msg?.data?.password}}</li>
+        </div> -->
+
+        </div>
+
+        <button class="btn btn-primary">add</button>
+    </form>
+</section>

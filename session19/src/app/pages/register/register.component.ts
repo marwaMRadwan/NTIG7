@@ -35,12 +35,17 @@ export class RegisterComponent implements OnInit {
             "slug": "Pharmacies"
         }
     ]
+
 genders:any = [
   {val:0, gender:"Male"},
   {val:1, gender:"Female"},
 ]
+
+
 isSubmitted:boolean = false
-  user = new FormGroup({
+registerResponse :any = null
+msg : any = null
+user = new FormGroup({
     name:new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
     phone:new FormControl('',[Validators.minLength(11),Validators.maxLength(11), Validators.pattern("^[0-9]+$")]),
     email:new FormControl('', [Validators.email, Validators.required]),
@@ -64,6 +69,21 @@ isSubmitted:boolean = false
     if(this.user.valid){
 this._global.register(this.user.value).subscribe(res=>{
   console.log(res)
+  this.registerResponse = res
+},()=>{},
+()=>{
+  if(this.registerResponse.success==""){ 
+    this.msg = {
+      flag: false,
+      data:this.registerResponse.error
+    }
+  }
+  else{
+this.msg = {
+  flag:true,
+  data: this.registerResponse.success
+}
+  }
 })
     }
   }
