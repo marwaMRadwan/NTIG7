@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValuesFromArray } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,5 +16,8 @@ public status = false
   }
   me():Observable<any>{
     return this._http.post(`${this.commonUrl}me`, {lang_id:1})
+  }
+  logout():Observable<any>{
+    return this._http.post('http://medical.mind-techs.com/api/auth/logout', null)
   }
 }

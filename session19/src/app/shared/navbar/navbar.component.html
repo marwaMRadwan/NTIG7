@@ -12,7 +12,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/allData">All Data</a>
           </li>
-<ng-template *ngIf="_global.status">
+<!-- <ng-template *ngIf="_global.status"> -->
   <li class="nav-item">
     <a class="nav-link" routerLink="/login">Login</a>
   </li>
@@ -20,7 +20,10 @@
     <a class="nav-link" routerLink="/register">Register</a>
   </li>
 
-</ng-template>
+<!-- </ng-template> -->
+<li class="nav-item">
+  <a class="nav-link" (click)="logout()">logout</a>
+</li>
           <li class="nav-item me-5">
             <a class="nav-link" routerLink="/edit">Edit</a>
           </li>

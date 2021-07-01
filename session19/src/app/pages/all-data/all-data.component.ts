@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -8,8 +9,12 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class AllDataComponent implements OnInit {
 
-  constructor(private _global:GlobalService) { 
+  constructor(private _global:GlobalService, private _activated: ActivatedRoute) { 
     this.getMe()
+    // this._activated.queryParamMap.subscribe(params=>{console.log(params.get('x'))})
+    console.log(
+      this._activated.snapshot.queryParamMap.get('x')
+    )
   }
 
   ngOnInit(): void {

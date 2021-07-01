@@ -14,6 +14,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserInterceptor } from './user.interceptor';
+import { UploadimgComponent } from './uploadimg/uploadimg.component';
+import { ChatComponent } from './chat/chat/chat.component';
+import { ParentComponent } from './inputout/parent/parent.component';
+import { ChildComponent } from './inputout/child/child.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,11 @@ import { UserInterceptor } from './user.interceptor';
     EditprofileComponent,
     AllDataComponent,
     Err404Component,
-    HomeComponent
+    HomeComponent,
+    UploadimgComponent,
+    ChatComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
